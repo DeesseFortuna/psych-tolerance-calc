@@ -8,23 +8,53 @@
         <a href="http://web.archive.org/web/20160616055614/https://www.reddit.com/r/LSD/comments/3w9ms0/psychedelic_tolerance_calculator_and_formula/">Original thread</a>
         <br/>
         <h2>LSD:</h2>
-        <label for="lastdose">Last dosage (&mu;g - micrograms):</label>
-        <input type="text" id="lastdose" value="100">
+        <label for="lastdoseL">Last dosage (&mu;g - micrograms):</label>
+        <input type="text" id="lastdoseL" value="100">
         <br/>
-        <label for="days">Days since:</label>
-        <input type="text" id="days" value="7">
+        <label for="daysL">Days since:</label>
+        <input type="text" id="daysL" value="12">
         <br/>
+        <p id="amountL"></p>
+
+        <h2>Shrooms:</h2>
+        <label for="lastdoseS">Last dosage (g - grams):</label>
+        <input type="text" id="lastdoseS" value="2000">
+        <br/>
+        <label for="daysS">Days since:</label>
+        <input type="text" id="daysS" value="12">
+        <br/>
+        <p id="amountS"></p>
+
+        <h2>Tryptamines (DMT):</h2>
+        <label for="lastdoseD">Last dosage (mg - milligrams):</label>
+        <input type="text" id="lastdoseD" value="50">
+        <br/>
+        <label for="daysD">Days since:</label>
+        <input type="text" id="daysD" value="12">
+        <br/>
+
+        <p id="amountD"></p>
         <input type="button" value="Calculate" onclick="calculate();">
-        <p id="amount"></p>
+
         <script type="text/javascript">
             function calculate() {
-                var x = document.getElementById("lastdose").value;
-                var n = document.getElementById("days").value;
+                var ldL = document.getElementById("lastdoseL").value;
+                var dL = document.getElementById("daysL").value;
+                var ldS = document.getElementById("lastdoseS").value;
+                var dS = document.getElementById("daysS").value;
+                var ldD = document.getElementById("lastdoseD").value;
+                var dD = document.getElementById("daysD").value;
 
-                var estimatedDosage = (x/100)*280.059565*(Math.pow(n, -0.412565956));
+                var estimatedDosageL = (ldL/100)*280.059565*(Math.pow(dL, -0.412565956));
+                var estimatedDosageS = (ldS/100)*280.059565*(Math.pow(dS, -0.412565956));
+                var estimatedDosageD = (ldD/100)*280.059565*(Math.pow(dD, -0.412565956));
                 // the ternary is because this equation will potentially return a value lower than the last value if the days since is long enough.
-                var newAmount = ((estimatedDosage < x) ? x : estimatedDosage);
-                document.getElementById("amount").innerHTML = "To feel the same effects as your previous dose, you'll need to take " + newAmount + "&mu;g";
+                var newAmountL = ((estimatedDosageL < ldL) ? ldL : estimatedDosageL);
+                var newAmountS = ((estimatedDosageS < ldS) ? ldS : estimatedDosageS);
+                var newAmountD = ((estimatedDosageD < ldD) ? ldD : estimatedDosageD);
+                document.getElementById("amountL").innerHTML = "To feel the same effects as your previous dose, you'll need to take " + newAmountL + "&mu;g";
+                document.getElementById("amountS").innerHTML = "To feel the same effects as your previous dose, you'll need to take " + newAmountS + "g";
+                document.getElementById("amountD").innerHTML = "To feel the same effects as your previous dose, you'll need to take " + newAmountD + "mg";
             }
         </script>
     </body>
