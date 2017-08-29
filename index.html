@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Psychedelic Tolerance Calculator</title>
+    </head>
+    <a href="http://web.archive.org/web/20160616055614/https://www.reddit.com/r/LSD/comments/3w9ms0/psychedelic_tolerance_calculator_and_formula/">Original thread</a>
+    <br/>
+    <h2>This will ONLY work for LSD, shrooms and tryptamines.</h2>
+    <label for="lastdose">Last dosage (&mu;g):</label>
+    <input type="text" id="lastdose">
+    <br/>
+    <label for="days">Days since:</label>
+    <input type="text" id="days">
+    <br/>
+    <input type="button" value="Calculate" onclick="calculate();">
+    <p id="amount"></p>
+    <script type="text/javascript">
+        function calculate() {
+            var x = document.getElementById("lastdose").value;
+            var n = document.getElementById("days").value;
+
+            var estimatedDosage = (x/100)*280.059565*(Math.pow(n, -0.412565956));
+            // the ternary is because this equation will potentially return a value lower than the last value if the days since is long enough.
+            var newAmount = ((estimatedDosage < x) ? x : estimatedDosage);
+            document.getElementById("amount").innerHTML = "To feel the same effects as your previous dose, you'll need to take " + newAmount + "&mu;g";
+        }
+    </script>
+    </body>
+</html>
