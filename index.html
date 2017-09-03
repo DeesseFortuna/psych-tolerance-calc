@@ -5,7 +5,10 @@
         <title>Psychedelic Tolerance Calculator</title>
     </head>
     <body>
-        <a href="http://web.archive.org/web/20160616055614/https://www.reddit.com/r/LSD/comments/3w9ms0/psychedelic_tolerance_calculator_and_formula/">Original thread</a>
+        <a href="http://web.archive.org/web/20160616055614/https://www.reddit.com/r/LSD/comments/3w9ms0/psychedelic_tolerance_calculator_and_formula/">Original reddit thread</a>
+
+        <br/>
+		<h2>Psychedelic Tolerance Calculator</h2>
         <br/>
         <h2>LSD:</h2>
         <label for="lastdoseL">Last dosage (&mu;g - micrograms):</label>
@@ -35,6 +38,26 @@
 
         <p id="amountD"></p>
         <input type="button" value="Calculate" onclick="calculate();">
+
+        <h2>Formula</h2>
+        y = ((x/100)*280.059565)/(n^0.412565956)
+		<br/>
+		y = (x/100)*280.059565/(pow(n, 0.412565956))
+        <br/>
+        Where <i>y</i> is the required dose to replicate a dose of <i>x</i> taken <i>n</i> days ago, units of dose equivalent on either side.
+		<br/>
+		<h2>Example: </h2>
+		<br/>
+		y = ((100/100)*280.059565)/(n^0.412565956)
+		<br/>
+		<br/>
+		<img src="https://i.imgur.com/JNt5YFx.png" alt="original equation">
+		<br/>
+		<img src="https://i.imgur.com/DgmXC3I.png" alt="example 100 micrograms">
+		<br/>
+		
+        <h2>Graph</h2>
+        <img src="http://i47.tinypic.com/2qvcw79.jpg" alt="original graph">
 
         <script type="text/javascript">
             function calculate() {
